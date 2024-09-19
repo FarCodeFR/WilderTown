@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bienvenue à WilderTown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles/main.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/mustache@latest"></script>
+    <script src="assets/main.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <h1>Bienvenue à WilderTown&nbsp;!</h1>
+      <p>
+        Le <strong>WildFest</strong> arrive à grand pas !
+        <br />
+        La dernière édition a été un franc succès.
+        <br />
+        Inscrivez-vous dès maintenant à la prochaine édition.
+      </p>
+      <h2>Ils sont déjà inscrits</h2>
+      <!-- ⬇️ écris la liste des inscrits ci-dessous ⬇️ -->
+      <ul>
+        <li>
+          <img
+            src="https://avatar.iran.liara.run/public/girl?username=Sofia"
+            alt="Sofia"
+          />
+          <p>Sofia</p>
+        </li>
+        <li>
+          <img
+            src="https://avatar.iran.liara.run/public/boy?username=Gabriel"
+            alt="Gabriel"
+          />
+          <p>Gabriel</p>
+        </li>
+        <li>
+          <img
+            src="https://avatar.iran.liara.run/public/girl?username=Leila"
+            alt="Leila"
+          />
+          <p>Leila</p>
+        </li>
+        <li>
+          <img
+            src="https://avatar.iran.liara.run/public/boy?username=Kenji"
+            alt="Kenji"
+          />
+          <p>Kenji</p>
+        </li>
+        <li>
+          <img
+            src="https://avatar.iran.liara.run/username?username=Tim+Berners-Lee"
+            alt="Tim Berners-Lee"
+          />
+          <p>Tim Berners-Lee</p>
+        </li>
+      </ul>
+      <form id="monFormulaire">
+        <h2>Inscrivez-vous</h2>
+        <label for="nom">Votre nom</label>
+        <input type="text" id="nom" required />
+
+        <label for="choix">Choisissez votre avatar</label>
+        <select id="choix">
+          <option value="public/boy">Masculin</option>
+          <option value="public/girl">Féminin</option>
+          <option value="username">Autre</option>
+        </select>
+        <button type="submit">Je m'inscris</button>
+      </form>
+      <script>
+        const participants = [
+          { nom: "John", avatar: "public/boy" },
+          { nom: "Paul", avatar: "public/boy" },
+          { nom: "Maria", avatar: "public/girl" },
+          { nom: "Ringo", avatar: "public/boy" },
+          { nom: "Kim", avatar: "public/girl" },
+          { nom: "Marta", avatar: "public/girl" },
+          { nom: "Jess Scoth", avatar: "username" },
+        ];
+
+        document
+          .getElementById("monFormulaire")
+          .addEventListener("submit", ajouterParticipant);
+      </script>
+      <script id="template" type="x-tmpl-mustache">
+        {{#participants}}
+            <li>
+                <img src="https://avatar.iran.liara.run/{{avatar}}?username={{nom}}" alt="{{nom}}">
+                <p>{{ nom }}</p>
+            </li>
+        {{/participants}}
+      </script>
+    </main>
+  </body>
+</html>
